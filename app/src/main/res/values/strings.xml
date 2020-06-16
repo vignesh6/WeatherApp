@@ -21,5 +21,5 @@
     <string name="humidity_val">%1s %% </string>
     <string name="pressure_val">%1s hPa</string>
     <string name="permission_describtion_short">We Use location data to provide\nyou with weather services,\nkindly Allow.</string>
-    <string name="todays_detail">Todays\'s Detail</string>
+    <string name="todays_detail">Today\'s Detail</string>
 </resources>
