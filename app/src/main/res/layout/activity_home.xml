@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="viewmodel"
+        type="com.sol.weatherapp.ui.home.HomeViewModel" />
+</data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg">
+<androidx.cardview.widget.CardView
+    android:id="@+id/cvMain"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+        <TextView
+            android:id="@+id/txtLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            app:setCityName = "@{viewmodel.locationName??@string/empty_string}"
+            app:setCountryName = "@{viewmodel.countryName??@string/empty_string}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:id="@+id/imgWeather"
+            android:contentDescription="@string/app_name"
+            app:networkState = "@{viewmodel.networkState}"
+            app:setWeatherIcon ="@{viewmodel.weatherIcon??@string/empty_string}"
+            android:layout_width="45dp"
+            android:layout_height="45dp"/>
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtLocation"
+            app:setDate="@{viewmodel.dateInt}" />
+
+        <TextView
+            android:id="@+id/txtCurrentTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:textSize="33sp"
+            android:textStyle="bold"
+            app:currentTemperature="@{viewmodel.temperature}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDate"
+            tools:text="22" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="3dp"
+            android:contentDescription="@string/degree_temperature"
+            android:drawableStart="@drawable/circle_white"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="@string/celcius"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/txtCurrentTemp"
+            app:layout_constraintTop_toBottomOf="@id/txtDate" />
+
+        <TextView
+            android:id="@+id/txtFeelsLikeTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="14sp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/feels_like"
+            android:textColor="@color/white"
+            app:feelsLike="@{viewmodel.feelsLikeTemp}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDate" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="15dp"
+            android:textSize="14sp"
+            tools:text="22 \u00B0 / 21 \u00B0"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtFeelsLikeTemp"
+            app:setMaxTemp="@{viewmodel.maxTemp}"
+            app:setMinTemp="@{viewmodel.minTemp}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtCurrentTemp"
+            app:setDescription="@{viewmodel.description??@string/empty_string}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvTodaysDetail"
+        app:layout_constraintTop_toBottomOf="@id/cvMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="@color/colorPrimaryLight"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="180dp" />
+            <TextView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/txtTodaysDetail"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="@string/todays_detail"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtTodaysDetail"
+                android:id="@+id/txtSunrise"
+                android:textSize="14sp"
+                android:layout_marginTop="12dp"
+                android:text="@string/sunrise"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/txtTodaysDetail"
+                android:id="@+id/txtSunriseVal"
+                tools:text="@string/sunrise"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                app:setSunTime = "@{viewmodel.sunrise}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtSunrise"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/txtSunset"
+                android:text="@string/sunset"
+                android:textSize="14sp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtSunrise"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                android:id="@+id/txtSunsetVal"
+                tools:setSunTime = "@{viewmodel.sunset}"
+                android:text="@string/sunset"
+                android:textSize="14sp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtSunset"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/txtHumidity"
+                android:text="@string/humidity"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtSunset"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                android:id="@+id/txtHumidityVal"
+                tools:text="@string/humidity"
+                app:setHumidity = "@{viewmodel.humidity}"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtHumidity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/txtWindSpeed"
+                android:text="@string/wind"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtHumidity"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                android:id="@+id/txtWindSpeedVal"
+                tools:text="@string/wind"
+                android:textSize="14sp"
+                app:setwindSpeed="@{viewmodel.windSpeed}"
+                app:setDirection = "@{viewmodel.windDegree}"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtWindSpeed"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/txtPressure"
+                android:text="@string/pressure"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/txtWindSpeed"
+                app:layout_constraintStart_toEndOf="@id/guideline2"
+                android:id="@+id/txtPressureVal"
+                android:textSize="14sp"
+                app:setPressure = "@{viewmodel.pressure}"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ProgressBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="permission_describtion">" Weather can provide you with \n forecast for your location. Please allow \n using Location services to enable this.\n We Use Precise location data  \n to provide you with weather services."</string>
+    <string name="i_understand">I Understand</string>
+    <string name="ok">OK</string>
+    <string name="cancel_text">CANCEL</string>
+    <string name="enable_gps">Location Service must be enabled to forecast weather!</string>
+    <string name="degree_temperature">Temperature value</string>
+    <string name="feels_like">Feels like %1s \u00B0</string>
+    <string name="min_max_temp">%1s \u00B0 "/" %2s \u00B0</string>
+    <string name="empty_string"/>
+    <string name="celcius">c</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="wind_speed">%1s %2s km"/"h</string>
+    <string name="pressure">Pressure</string>
+    <string name="wind_direction">Wind Direction</string>
+    <string name="location_name">%1s, %2s</string>
+    <string name="humidity_val">%1s %% </string>
+    <string name="pressure_val">%1s hPa</string>
+    <string name="permission_describtion_short">We Use location data to provide\nyou with weather services,\nkindly Allow.</string>
+    <string name="todays_detail">Todays\'s Detail</string>
+</resources>
