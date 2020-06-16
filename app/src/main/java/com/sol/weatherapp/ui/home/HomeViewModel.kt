@@ -49,7 +49,7 @@ class HomeViewModel @Inject constructor(
             .setRequiredNetworkType(NetworkType.UNMETERED)
             .build()
         val weatherInfoWorker =
-            PeriodicWorkRequestBuilder<TrackWeatherInfoWorker>(15, TimeUnit.MINUTES).addTag(
+            PeriodicWorkRequestBuilder<TrackWeatherInfoWorker>(2, TimeUnit.HOURS).addTag(
                 WEATHER_INFO_WORK
             ).setConstraints(constraints).build()
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(

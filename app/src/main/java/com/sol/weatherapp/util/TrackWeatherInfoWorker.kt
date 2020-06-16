@@ -11,7 +11,6 @@ import com.sol.weatherapp.di.Provider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
 class TrackWeatherInfoWorker @Inject constructor(context: Context, workParams: WorkerParameters) :
